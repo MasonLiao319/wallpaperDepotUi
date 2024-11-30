@@ -1,0 +1,14 @@
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-top: 20px; 
+}
+
+
+.card-wrapper {
+  margin: 15px; /* Space between cards */
+  flex: 0 1 200px; /* Cards will be 300px wide but flexible */
+}
