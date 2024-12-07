@@ -45,7 +45,7 @@ export default function Signup() {
           <div className="mb-3">
             <label className="form-label">First Name</label>
             <input
-              {...register("firstName", { required: true })}
+              {...register("firstName", { required: "First Name is required."  })}
               type="text"
               className="form-control bg-light"
             />

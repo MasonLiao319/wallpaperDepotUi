@@ -9,26 +9,28 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null); 
   const [loading, setLoading] = useState(true); 
 
-  
+
   const fetchSession = async () => {
     try {
-      const response = await axios.get(`${apiHost}/api/users/getsession`, { withCredentials: true });
-      if (response.status === 200 && response.data) {
+      console.log("Fetching session...");
+      const response = await axios.get(`${apiHost}/api/users/getsession`, {
+        withCredentials: true,
+      });
+      if (response.status === 200) {
+        console.log("Session data fetched:", response.data); 
         setUser(response.data); 
       } else {
-        setUser(null); 
+        console.log("No active session");
+        setUser(null);
       }
     } catch (error) {
-      if (error.response && error.response.status === 401) {
-        console.log("No active session, user not logged in.");
-        setUser(null); 
-      } else {
-        console.error("Error fetching session:", error);
-      }
+      console.error("Error fetching session:", error);
+      setUser(null);
     } finally {
-      setLoading(false); 
+      setLoading(false);
     }
   };
+  
 
   
   const login = async (credentials) => {

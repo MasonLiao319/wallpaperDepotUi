@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../routes/AuthContext";
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
+
 
 export default function NavBar() {
   const { user, loading, logout } = useAuth();
@@ -35,16 +38,15 @@ export default function NavBar() {
                   <span className="nav-link">Welcome, {user.firstName}</span>
                 </li>
                 <li className="nav-item">
-                  <Link to="/cart" className="nav-link">Cart</Link>
+                  <Link to="/cart" className="nav-link">
+                    <i className="bi bi-cart fs-5"></i> {/* Adjust size with fs-5 */}
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <button
-                    className="btn btn-outline-danger nav-link"
-                    onClick={logout}
-                  >
-                    Logout
-                  </button>
-                </li>
+                <Link to="/logout" className="btn btn-outline-danger nav-link">
+                  Logout
+                </Link>
+              </li>
               </>
             ) : (
               <>
@@ -52,8 +54,11 @@ export default function NavBar() {
                   <Link to="/login" className="nav-link">Login</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/cart" className="nav-link">Cart</Link>
+                  <Link to="/cart" className="nav-link">
+                    <i className="bi bi-cart fs-5"></i> {/* Adjust size with fs-5 */}
+                  </Link>
                 </li>
+
               </>
             )}
           </ul>

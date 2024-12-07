@@ -22,11 +22,8 @@ export default function Logout() {
           // Clear user state in AuthContext
           setUser(null);
 
-          // Update status and navigate to homepage after delay
+          // Update status
           setStatus("You have been successfully logged out.");
-          setTimeout(() => {
-            navigate("/"); 
-          }, 2000);
         } else {
           // Handle failure
           setStatus("Error logging out. Please try again.");
@@ -38,12 +35,33 @@ export default function Logout() {
     }
 
     logout();
-  }, [navigate, setUser]);
+  }, [setUser]);
 
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <h1>Logout</h1>
-      <p>{status}</p>
+    <div className="d-flex justify-content-center align-items-center">
+    <div >
+      <h1 className="mb-4">Logout</h1>
+      <p className="mb-4">{status}</p>
+      {status === "You have been successfully logged out." && (
+        <div>
+          <div className="d-flex justify-content-center mt-3">
+            <button
+              className="btn btn-primary me-3"
+              onClick={() => navigate("/login")}
+            >
+              Go to Login Page
+            </button>
+            <button
+              className="btn btn-secondary"
+              onClick={() => navigate("/")}
+            >
+              Go to Home Page
+            </button>
+          </div>
+        </div>
+        
+      )}
+    </div>
     </div>
   );
 }
